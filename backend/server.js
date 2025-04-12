@@ -1,27 +1,39 @@
-require('rootpath')();
 const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const errorHandler = require('_middleware/error-handler');
+const { check } = require('express-validator');
+const accountsController = require('./accounts/accounts.controller');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cookieParser());
+const app = express();
 
-// allow cors requests from any origin and with credentials
-app.use(cors({ origin: (origin, callback) => callback(null, true), credentials: true }));
+// enable cors
+app.use(cors());
 
-// api routes
-app.use('/accounts', require('./accounts/accounts.controller'));
+// parse requests of content-type - application/json
+app.use(express.json());
 
-// swagger docs route
-app.use('/api-docs', require('_helpers/swagger'));
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
 
-// global error handler
-app.use(errorHandler);
+// register routes
+app.post('/accounts/register', [
+    check('title', 'Title is required').notEmpty(),
+    check('firstName', 'First Name is required').notEmpty(),
+    check('lastName', 'Last Name is required').notEmpty(),
+    check('email', 'Email is required').isEmail(),
+    check('password', 'Password is required').isLength({ min: 6 })
+], accountsController.register);
 
-// start server
-const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;
-app.listen(port, () => console.log('Server listening on port ' + port));
+app.post('/accounts/verify-email', [
+    check('token', 'Token is required').notEmpty()
+], accountsController.verifyEmail);
+
+app.post('/accounts/authenticate', [
+    check('email', 'Email is required').isEmail(),
+    check('password', 'Password is required').notEmpty()
+], accountsController.authenticate);
+
+// set port, listen for requests
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+});

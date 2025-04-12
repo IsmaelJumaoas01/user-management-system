@@ -134,4 +134,3 @@ async function sendAlreadyRegisteredEmail(email, origin) {
                ${message}`
     });
 }
-
