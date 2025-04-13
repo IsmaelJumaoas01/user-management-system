@@ -3,9 +3,14 @@ const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
 const accountService = require('./account.service');
+
 const authorize = require("../_middleware/authorize");
 
 const Role = require("../_helpers/role");
+
+const authorize = require('../middleware/authorize');
+
+
 
 // Authentication and account management endpoints
 router.post('/authenticate', authenticateSchema, authenticate);
