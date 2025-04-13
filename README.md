@@ -96,7 +96,7 @@ Create a `config.json` file in the backend directory with the following structur
     }
 }
 ```
-### Ensure to run/start MySQL service before starting the application,
+### IMPORTANT: Ensure to run/start MySQL service before starting the application
 
 ### Option 1: Run Both Backend and Frontend Concurrently (Recommended)
 
