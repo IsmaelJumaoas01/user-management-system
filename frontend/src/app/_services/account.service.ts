@@ -3,8 +3,8 @@ import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map, finalize } from "rxjs/operators";
-import { environment } from "@environments/environment";
-import { Account } from "@app/_models";
+import { environment } from "../../environments/environment";
+import { Account } from "../_models/account";
 
 const baseUrl = `${environment.apiUrl}/accounts`;
 
@@ -14,18 +14,21 @@ const baseUrl = `${environment.apiUrl}/accounts`;
  */
 @Injectable({ providedIn: "root" })
 export class AccountService {
-  private accountSubject: BehaviorSubject<Account>;
-  public account: Observable<Account>;
+  private accountSubject: BehaviorSubject<Account | null>;
+  public account: Observable<Account | null>;
 
   constructor(private router: Router, private http: HttpClient) {
-    this.accountSubject = new BehaviorSubject<Account>(null);
+    // Try to restore account from localStorage
+    const storedAccount = localStorage.getItem('currentUser');
+    const initialAccount = storedAccount ? JSON.parse(storedAccount) : null;
+    this.accountSubject = new BehaviorSubject<Account | null>(initialAccount);
     this.account = this.accountSubject.asObservable();
   }
 
   /**
    * Get the current account value
    */
-  public get accountValue(): Account {
+  public get accountValue(): Account | null {
     return this.accountSubject.value;
   }
 
@@ -44,6 +47,8 @@ export class AccountService {
       )
       .pipe(
         map((account) => {
+          // Store the account in localStorage
+          localStorage.setItem('currentUser', JSON.stringify(account));
           this.accountSubject.next(account);
           this.startRefreshTokenTimer();
           return account;
@@ -55,12 +60,52 @@ export class AccountService {
    * Logout current user and revoke refresh token
    */
   logout() {
+    console.log('Starting logout process...');
+    console.log('Current localStorage before logout:', {
+      accounts: localStorage.getItem('angular-18-signup-verification-boilerplate-accounts'),
+      currentUser: localStorage.getItem('currentUser'),
+      refreshToken: localStorage.getItem('refreshToken')
+    });
+
     this.http
       .post<any>(`${baseUrl}/revoke-token`, {}, { withCredentials: true })
-      .subscribe();
-    this.stopRefreshTokenTimer();
-    this.accountSubject.next(null);
-    this.router.navigate(["/account/login"]);
+      .subscribe({
+        next: () => {
+          console.log('Token revoked successfully');
+          this.stopRefreshTokenTimer();
+          this.accountSubject.next(null);
+          
+          // Clear all session-related data from localStorage
+          localStorage.removeItem('angular-18-signup-verification-boilerplate-accounts');
+          localStorage.removeItem('currentUser');
+          localStorage.removeItem('refreshToken');
+          
+          console.log('LocalStorage after logout:', {
+            accounts: localStorage.getItem('angular-18-signup-verification-boilerplate-accounts'),
+            currentUser: localStorage.getItem('currentUser'),
+            refreshToken: localStorage.getItem('refreshToken')
+          });
+
+          this.router.navigate(["/account/login"]);
+        },
+        error: (error) => {
+          console.error('Logout error:', error);
+          // Still clear local data even if server request fails
+          this.stopRefreshTokenTimer();
+          this.accountSubject.next(null);
+          localStorage.removeItem('angular-18-signup-verification-boilerplate-accounts');
+          localStorage.removeItem('currentUser');
+          localStorage.removeItem('refreshToken');
+          
+          console.log('LocalStorage after error logout:', {
+            accounts: localStorage.getItem('angular-18-signup-verification-boilerplate-accounts'),
+            currentUser: localStorage.getItem('currentUser'),
+            refreshToken: localStorage.getItem('refreshToken')
+          });
+
+          this.router.navigate(["/account/login"]);
+        }
+      });
   }
 
   /**
@@ -72,6 +117,8 @@ export class AccountService {
       .post<any>(`${baseUrl}/refresh-token`, {}, { withCredentials: true })
       .pipe(
         map((account) => {
+          // Store the account in localStorage
+          localStorage.setItem('currentUser', JSON.stringify(account));
           this.accountSubject.next(account);
           this.startRefreshTokenTimer();
           return account;
@@ -157,7 +204,7 @@ export class AccountService {
     return this.http.put(`${baseUrl}/${id}`, params).pipe(
       map((account: any) => {
         // Update current account if it was modified
-        if (account.id === this.accountValue.id) {
+        if (account.id === this.accountValue?.id) {
           account = { ...this.accountValue, ...account };
           this.accountSubject.next(account);
         }
@@ -175,11 +222,20 @@ export class AccountService {
     return this.http.delete(`${baseUrl}/${id}`).pipe(
       finalize(() => {
         // Auto logout if the logged in account was deleted
-        if (id === this.accountValue.id) {
+        if (id === this.accountValue?.id) {
           this.logout();
         }
       })
     );
+  }
+
+  /**
+   * Create a new account
+   * @param account The account details to create
+   * @returns Observable of the created account
+   */
+  create(account: Account) {
+    return this.http.post(`${baseUrl}`, account);
   }
 
   private refreshTokenTimeout;
@@ -189,6 +245,8 @@ export class AccountService {
    * Automatically refreshes the JWT token before it expires
    */
   private startRefreshTokenTimer() {
+    if (!this.accountValue?.jwtToken) return;
+    
     const jwtToken = JSON.parse(atob(this.accountValue.jwtToken.split(".")[1]));
     const expires = new Date(jwtToken.exp * 1000);
     const timeout = expires.getTime() - Date.now() - 60 * 1000;

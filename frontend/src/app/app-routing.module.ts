@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home';
+import { UsersComponent } from './users/users.component';
 import { AuthGuard } from './_helpers';
 import { Role } from './_models';
 
@@ -11,11 +12,10 @@ const profileModule = () => import('./profile/profile.module').then(x => x.Profi
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: 'users', component: UsersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
     { path: 'account', loadChildren: accountModule },
     { path: 'profile', loadChildren: profileModule, canActivate: [AuthGuard] },
     { path: 'admin', loadChildren: adminModule, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
-
-
     { path: '**', redirectTo: '' }
 ];
 

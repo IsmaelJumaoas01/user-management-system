@@ -3,20 +3,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AccountService, AlertService } from '../_services';
+import { AccountService } from '../_services';
 
 @Component({ selector: 'app-login', templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
   form!: UntypedFormGroup;
   loading = false;
   submitted = false;
+  error = '';
 
   constructor(
     private formBuilder: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private accountService: AccountService,
-    private alertService: AlertService
+    private accountService: AccountService
   ) { }
 
   ngOnInit() {
@@ -26,13 +26,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-
   get f() { return this.form.controls; }
 
   onSubmit() {
     this.submitted = true;
-
-    this.alertService.clear();
+    this.error = '';
 
     if (this.form.invalid) {
       return;
@@ -43,12 +41,11 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
-        
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
           this.router.navigateByUrl(returnUrl);
         },
         error: error => {
-          this.alertService.error(error);
+          this.error = error;
           this.loading = false;
         }
       });

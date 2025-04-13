@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
-          this.alertService.success('Registration successful, please check your email for verification instructions', { keepAfterRouteChange: true });
+          this.alertService.success('Registration successful. Please check your email to verify your account.', { keepAfterRouteChange: true });
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
         error: error => {

@@ -291,10 +291,10 @@ async function refreshToken({ token, ipAddress }) {
       html: `<h4>Reset Password Email</h4>
              ${message}`
     });
-  }
-
-async function getRefreshToken(token) {
+  }async function getRefreshToken(token) {
     const refreshToken = await db.RefreshToken.findOne({ where: { token } });
     if (!refreshToken || !refreshToken.isActive) throw 'Invalid token';
     return refreshToken;
 }
+
+  

@@ -2,11 +2,11 @@ import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { filter } from "rxjs/operators";
 
-import { Alert, AlertType } from "@app/_models";
+import { Alert, AlertType } from "../_models/alert";
 
 @Injectable({ providedIn: "root" })
 export class AlertService {
-  private subject: Subject<Alert>;
+  private subject = new Subject<Alert>();
   private defaultId = "default-alert";
 
 
