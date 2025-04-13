@@ -683,5 +683,3 @@ components:
               message:
                 type: string
                 example: "Not Found"
-swagger.yaml
-Displaying swagger.yaml.
