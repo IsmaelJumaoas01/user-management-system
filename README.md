@@ -1,5 +1,8 @@
 # User Management System - Functional Testing Results
 
+## Testers
+- Ismael Jose Jumao-as && Prince Dominic Lazaga
+
 ## Test Environment
 - Frontend: Angular 10
 - Backend: Node.js + MySQL
@@ -52,7 +55,6 @@
   - User can now log in
 
 ### 3. Authentication Flow
-![Login Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/login-interface.png)
 
 #### Test Case 3.1: Successful Login
 - **Steps**:
@@ -93,7 +95,7 @@
 - **Actual Result**: ✅ PASS
   - All fields updated successfully
   - Changes persisted in database
-![Update Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/profile-update.png)
+![Update Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/profile-update-ui.png)
 ![Update Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/profile-update-change.png)
 
 
@@ -125,8 +127,7 @@
   - All users visible
   - Table displays correctly
  ![Admin Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/admin-user-management.png)
-  ![Admin Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/admin-user-update.png)
- 
+
  
 
 #### Test Case 5.2: Edit User (Admin)
@@ -140,7 +141,8 @@
 - **Actual Result**: ✅ PASS
   - All fields editable
   - Changes saved successfully
-
+  ![Admin Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/admin-user-update.png)
+ 
 #### Test Case 5.3: Delete User
 - **Steps**:
   1. Click delete on a user
@@ -151,6 +153,9 @@
 - **Actual Result**: ✅ PASS
   - User successfully deleted
   - Removed from database
+  ![Admin Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/admin-user-delete.png)
+   ![Admin Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/admin-user-deleted.png)
+
 
 ### 6. Authorization
 #### Test Case 6.1: Unauthorized Access
@@ -166,10 +171,6 @@
 ## Issues Found
 1. None - All test cases passed successfully
 
-## Recommendations
-1. Consider adding more comprehensive error messages
-2. Add loading indicators for all async operations
-3. Implement automated testing for future releases
 
 ## Test Coverage
 - Registration: 100%
@@ -178,5 +179,3 @@
 - Admin Functions: 100%
 - Authorization: 100%
 
-## Testers
-- Ismael Jose Jumao-as && Prince Dominic Lazaga
