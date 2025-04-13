@@ -9,7 +9,7 @@
 ## Test Cases and Results
 
 ### 1. User Registration Flow
-
+![Registration Form](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/docs/registration.png)
 
 #### Test Case 1.1: New User Registration
 - **Steps**:
@@ -17,15 +17,15 @@
   2. Fill in required fields (title, name, email, password)
   3. Submit registration form
 - **Expected Result**: 
-![Registration Form](https://raw.githubusercontent.com/yourusername/user-management-system/main/docs/registration.png)
-![Email Verification Process](https://raw.githubusercontent.com/yourusername/user-management-system/main/docs/email-verification.png)
-![User Created](https://raw.githubusercontent.com/yourusername/user-management-system/main/docs/user-created-db.png)
   - Verification email sent
   - User created in database
+  ![Email Verification Process](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/docs/email-verification.png)
 - **Actual Result**: ✅ PASS
   - User successfully registered
   - Verification email received via Ethereal
   - User record created in database
+  ![User Created in Database](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/docs/user-createrd-db.png)
+  
 
 #### Test Case 1.2: Duplicate Email Registration
 - **Steps**:
@@ -38,7 +38,7 @@
   - No duplicate user created
 
 ### 2. Email Verification Flow
-![Email Verification Process](https://raw.githubusercontent.com/yourusername/user-management-system/main/docs/email-verification.png)
+![Email Verification Process](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/docs/email-verification.png)
 
 #### Test Case 2.1: Email Verification
 - **Steps**:
@@ -52,7 +52,7 @@
   - User can now log in
 
 ### 3. Authentication Flow
-![Login Interface](https://raw.githubusercontent.com/yourusername/user-management-system/main/docs/login-interface.png)
+![Login Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/docs/login-interface.png)
 
 #### Test Case 3.1: Successful Login
 - **Steps**:
