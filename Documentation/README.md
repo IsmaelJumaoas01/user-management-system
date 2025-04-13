@@ -9,34 +9,34 @@ A modern web application for user management with email verification, authentica
 
 1. **Paul Christian Patiño** - Email Sign-Up, Verification, and Authentication
    - Implement email sign-up functionality
-   ![Email Sign-Up Implementation](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/patino-1.png)
+   ![Email Sign-Up Implementation](docs/patino-1.png)
    
    - Implement email verification process
-   ![Email Verification Process 1](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/patino-2.1.png)
-   ![Email Verification Process 2](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/patino-2.2.png)
+   ![Email Verification Process 1](docs/patino-2.1.png)
+   ![Email Verification Process 2](docs/patino-2.2.png)
    
    - Implement authentication system
-   ![Authentication System](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/patino-3.1.png)
+   ![Authentication System](docs/patino-3.1.png)
    
    - Branch: `backend-signup-auth`
 
 2. **Arnold Cutad Jr** - Role-Based Authorization, Forgot Password, and CRUD
    - Implement role-based authorization system
-   ![Role-Based Authorization 1](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/cutad-1.1.png)
-   ![Role-Based Authorization 2](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/cutad-1.2.png)
+   ![Role-Based Authorization 1](docs/cutad-1.1.png)
+   ![Role-Based Authorization 2](docs/cutad-1.2.png)
    
    - Implement forgot password functionality
-   ![Forgot Password](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/cutad-2.1.png)
+   ![Forgot Password](docs/cutad-2.1.png)
    
    - Implement reset password functionality
-   ![Reset Password 1](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/cutad-3.1.png)
-   ![Reset Password 2](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/cutad-3.2.png)
+   ![Reset Password 1](docs/cutad-3.1.png)
+   ![Reset Password 2](docs/cutad-3.2.png)
    
    - Implement CRUD operations for user management
-   ![CRUD Operations 1](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/cutad-4.1.png)
-   ![CRUD Operations 2](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/cutad-4.2.png)
-   ![CRUD Operations 3](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/cutad-4.3.png)
-   ![CRUD Operations 4](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/cutad-4.4.png)
+   ![CRUD Operations 1](docs/cutad-4.1.png)
+   ![CRUD Operations 2](docs/cutad-4.2.png)
+   ![CRUD Operations 3](docs/cutad-4.3.png)
+   ![CRUD Operations 4](docs/cutad-4.4.png)
    
    - Branch: `backend-authorization-crud`
 
@@ -44,25 +44,25 @@ A modern web application for user management with email verification, authentica
 
 1. **Ismael Jose Jumao-as** - Email Sign-Up, Verification, and Authentication
    - Implement email sign-up functionality
-   ![Email Sign-Up Frontend 1](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/mael-1.1.png)
-   ![Email Sign-Up Frontend 2](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/mael-1.2.png)
-   ![Email Sign-Up Frontend 3](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/mael-1.3.png)
+   ![Email Sign-Up Frontend 1](docs/mael-1.1.png)
+   ![Email Sign-Up Frontend 2](docs/mael-1.2.png)
+   ![Email Sign-Up Frontend 3](docs/mael-1.3.png)
    
    - Implement email verification process
-   ![Email Verification Frontend](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/mael-2.1.png)
+   ![Email Verification Frontend](docs/mael-2.1.png)
    
    - Implement authentication system
-   ![Authentication Frontend](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/mael-3.1.png)
+   ![Authentication Frontend](docs/mael-3.1.png)
    
    - Branch: `frontend-signup-auth`
 
 2. **Prince Dominic Lazaga** - Profile Management, Admin Dashboard, and Fake Backend
    - Implement profile management system
-   ![Profile Management](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/lazaga-1.1.png)
+   ![Profile Management](docs/lazaga-1.1.png)
    
    - Implement admin dashboard
-   ![Admin Dashboard 1](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/lazaga-2.1.png)
-   ![Admin Dashboard 2](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/Documentation/docs/lazaga-2.2.png)
+   ![Admin Dashboard 1](docs/lazaga-2.1.png)
+   ![Admin Dashboard 2](docs/lazaga-2.2.png)
    
    - Implement fake backend for development
    
