@@ -64,18 +64,11 @@ Tester **Arnold Cutad Jr**  && **Paul Christian Patiño** : Security Testing
 
 ## Installation
 
-### 1. Clone the Repository
+### 1. Clone the Repository & Configure the config.json
 
 ```bash
 git clone https://github.com/IsmaelJumaoas01/user-management-system
 cd user-management-system
-```
-
-### 2. Backend Setup
-
-```bash
-cd backend
-npm install --legacy-peer-deps
 ```
 
 Create a `config.json` file in the backend directory with the following structure:
@@ -104,15 +97,6 @@ Create a `config.json` file in the backend directory with the following structur
 }
 ```
 
-### 3. Frontend Setup
-
-```bash
-cd frontend
-npm install --legacy-peer-deps
-```
-
-## Running the Application
-
 ### Option 1: Run Both Backend and Frontend Concurrently (Recommended)
 
 1. Install all dependencies and start both servers with a single command:
@@ -127,6 +111,7 @@ This will:
 - Install all dependencies for both backend and frontend
 - Start the backend server on `http://localhost:4000`
 - Start the frontend development server on `http://localhost:4200`
+
 
 ### Option 2: Run Backend and Frontend Separately
 
