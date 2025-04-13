@@ -66,7 +66,7 @@
   - User successfully logged in
   - Proper redirection
   - Token stored in localStorage
-  ![Login Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/home-page)
+  ![Home Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/home-page.png)
 
 #### Test Case 3.2: Invalid Login
 - **Steps**:
@@ -77,9 +77,12 @@
 - **Actual Result**: ✅ PASS
   - "Invalid credentials" error displayed
   - No unauthorized access
+![Invalid Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/invalid-user.png)
+
 
 ### 4. Profile Management
 #### Test Case 4.1: Update Profile Information
+![Update Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/profile-update-ui.png)
 - **Steps**:
   1. Navigate to profile page
   2. Update personal information
@@ -90,6 +93,10 @@
 - **Actual Result**: ✅ PASS
   - All fields updated successfully
   - Changes persisted in database
+![Update Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/profile-update.png)
+![Update Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/profile-update-change.png)
+
+
 
 #### Test Case 4.2: Change Password
 - **Steps**:
@@ -103,6 +110,8 @@
 - **Actual Result**: ✅ PASS
   - Password successfully changed
   - New password works for login
+![Update Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/profile-update.png)
+
 
 ### 5. Admin Dashboard
 #### Test Case 5.1: View All Users
@@ -115,6 +124,10 @@
 - **Actual Result**: ✅ PASS
   - All users visible
   - Table displays correctly
+ ![Admin Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/admin-user-management.png)
+  ![Admin Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/admin-user-update.png)
+ 
+ 
 
 #### Test Case 5.2: Edit User (Admin)
 - **Steps**:
