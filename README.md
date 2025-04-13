@@ -31,6 +31,16 @@ A modern web application for user management with email verification, authentica
    - Implement fake backend for development
    - Branch: `frontend-profile-admin-fake-backend`
 
+### Testers 
+Tester **Ismael Jose Jumao-as** && **Prince Dominic Lazaga**: Functional Testing
+   - Test user flows such as registration, login, profile updates, and admin dashboard functionality.
+   - Branch: `tester-functional-testing`
+
+Tester **Arnold Cutad Jr**  && **Paul Christian Patiño** : Security Testing
+   - Test for vulnerabilities such as unauthorized access, SQL injection, and XSS attacks.
+   - Branch: `tester-security-testing`
+
+
 ## Tech Stack
 
 ### Frontend
