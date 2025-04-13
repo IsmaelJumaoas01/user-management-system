@@ -22,7 +22,7 @@ An Angular 17 frontend application for managing user accounts with features like
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/user-management-system.git
+git clone https://github.com/IsmaelJumaoas01/user-management-system
 cd frontend
 ```
 

@@ -57,7 +57,7 @@ A modern web application for user management with email verification, authentica
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/IsmaelJumaoas01/user-management-system.git
+git clone https://github.com/IsmaelJumaoas01/user-management-system
 cd user-management-system
 ```
 
