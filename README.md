@@ -9,7 +9,7 @@
 ## Test Cases and Results
 
 ### 1. User Registration Flow
-![Registration Form](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/docs/registration.png)
+![Registration Form](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/registration.png)
 
 #### Test Case 1.1: New User Registration
 - **Steps**:
@@ -19,12 +19,12 @@
 - **Expected Result**: 
   - Verification email sent
   - User created in database
-  ![Email Verification Process](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/docs/email-verification.png)
+  ![Email Verification Process](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/email-verification.png)
 - **Actual Result**: ✅ PASS
   - User successfully registered
   - Verification email received via Ethereal
   - User record created in database
-  ![User Created in Database](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/docs/user-createrd-db.png)
+  ![User Created in Database](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/user-createrd-db.png)
   
 
 #### Test Case 1.2: Duplicate Email Registration
@@ -38,7 +38,7 @@
   - No duplicate user created
 
 ### 2. Email Verification Flow
-![Email Verification Process](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/docs/email-verification.png)
+![Email Verification Process](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/email-verification.png)
 
 #### Test Case 2.1: Email Verification
 - **Steps**:
@@ -52,7 +52,7 @@
   - User can now log in
 
 ### 3. Authentication Flow
-![Login Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/main/docs/login-interface.png)
+![Login Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/login-interface.png)
 
 #### Test Case 3.1: Successful Login
 - **Steps**:
@@ -66,6 +66,7 @@
   - User successfully logged in
   - Proper redirection
   - Token stored in localStorage
+  ![Login Interface](https://raw.githubusercontent.com/IsmaelJumaoas01/user-management-system/tester-functional-testing/docs/home-page)
 
 #### Test Case 3.2: Invalid Login
 - **Steps**:
