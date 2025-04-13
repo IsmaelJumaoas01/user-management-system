@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+const Role = require('../_helpers/role');
 
 module.exports = model;
 
@@ -10,7 +11,11 @@ function model(sequelize) {
         firstName: { type: DataTypes.STRING, allowNull: false },
         lastName: { type: DataTypes.STRING, allowNull: false },
         acceptTerms: { type: DataTypes.BOOLEAN },
-        role: { type: DataTypes.STRING, allowNull: false },
+        role: { 
+            type: DataTypes.STRING, 
+            allowNull: false,
+            defaultValue: Role.User 
+        },
         verificationToken: { type: DataTypes.STRING },
         verified: { type: DataTypes.DATE },
         resetToken: { type: DataTypes.STRING },
@@ -33,14 +38,11 @@ function model(sequelize) {
     };
 
     const options = {
-       
         timestamps: false,
         defaultScope: {
-          
             attributes: { exclude: ['passwordHash'] }
         },
         scopes: {
-         
             withHash: { attributes: {}, }
         }
     };

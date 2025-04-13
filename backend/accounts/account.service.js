@@ -63,11 +63,16 @@ async function register(params, origin) {
     // hash password
     account.passwordHash = await hash(params.password);
 
-    // save account
-    await account.save();
-
-    // send email
-    await sendVerificationEmail(account, origin);
+    try {
+        // save account
+        await account.save();
+        
+        // send email
+        await sendVerificationEmail(account, origin);
+    } catch (error) {
+        console.error('Registration error:', error);
+        throw error;
+    }
 }
 
 async function verifyEmail({ token }) {
