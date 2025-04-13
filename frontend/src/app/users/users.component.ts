@@ -1,72 +1,126 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../_services';
-import { Account } from '../_models';
-
-interface UserWithEditing extends Account {
-    isEditing: boolean;
-}
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AccountService, AlertService } from '../_services';
+import { Account, Role } from '../_models';
+import { first } from 'rxjs/operators';
+import { MustMatch } from '../_helpers';
 
 @Component({
     templateUrl: 'users.component.html',
     styleUrls: ['users.component.less']
 })
 export class UsersComponent implements OnInit {
-    users: UserWithEditing[] = [];
+    users: Account[] = [];
     loading = false;
-    private originalUser: UserWithEditing | null = null;
+    editForm!: FormGroup;
+    selectedUser: Account | null = null;
 
-    constructor(private accountService: AccountService) { }
+    constructor(
+        private accountService: AccountService,
+        private alertService: AlertService,
+        private formBuilder: FormBuilder
+    ) { }
 
     ngOnInit() {
+        this.loadUsers();
+        this.initEditForm();
+    }
+
+    private loadUsers() {
         this.loading = true;
         this.accountService.getAll()
             .subscribe(users => {
-                this.users = users.map(user => ({ ...user, isEditing: false }));
+                this.users = users;
                 this.loading = false;
             });
     }
 
-    startEdit(user: UserWithEditing) {
-        // Store original values
-        this.originalUser = { ...user };
-        user.isEditing = true;
+    private initEditForm() {
+        this.editForm = this.formBuilder.group({
+            title: ['', Validators.required],
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            role: ['', Validators.required],
+            password: ['', [Validators.minLength(6)]],
+            confirmPassword: ['']
+        }, {
+            validator: MustMatch('password', 'confirmPassword')
+        });
     }
 
-    saveEdit(user: UserWithEditing) {
-        this.loading = true;
-        // Only update the allowed fields
-        const updateData = {
+    editUser(user: Account) {
+        this.selectedUser = user;
+        this.editForm.patchValue({
             title: user.title,
             firstName: user.firstName,
-            lastName: user.lastName
-        };
+            lastName: user.lastName,
+            email: user.email,
+            role: user.role,
+            password: '',
+            confirmPassword: ''
+        });
+        // Show modal
+        const modal = document.getElementById('editUserModal');
+        if (modal) {
+            modal.classList.add('show');
+            modal.style.display = 'block';
+        }
+    }
 
-        this.accountService.update(user.id, updateData)
+    onEditSubmit() {
+        if (this.editForm.invalid || !this.selectedUser) {
+            return;
+        }
+
+        // Remove password fields if they're empty
+        const formValue = { ...this.editForm.value };
+        if (!formValue.password) {
+            delete formValue.password;
+            delete formValue.confirmPassword;
+        }
+
+        this.loading = true;
+        this.accountService.update(this.selectedUser.id, formValue)
+            .pipe(first())
             .subscribe({
                 next: () => {
-                    user.isEditing = false;
-                    this.originalUser = null;
-                    this.loading = false;
+                    this.alertService.success('User updated successfully');
+                    this.loadUsers();
+                    this.closeModal();
                 },
-                error: (error) => {
-                    console.error('Update failed:', error);
-                    // Revert changes on error
-                    if (this.originalUser) {
-                        Object.assign(user, this.originalUser);
-                    }
-                    user.isEditing = false;
-                    this.originalUser = null;
+                error: error => {
+                    this.alertService.error(error);
                     this.loading = false;
                 }
             });
     }
 
-    cancelEdit(user: UserWithEditing) {
-        // Revert to original values
-        if (this.originalUser) {
-            Object.assign(user, this.originalUser);
+    deleteUser(user: Account) {
+        if (confirm('Are you sure you want to delete this user?')) {
+            this.loading = true;
+            this.accountService.delete(user.id)
+                .pipe(first())
+                .subscribe({
+                    next: () => {
+                        this.alertService.success('User deleted successfully');
+                        this.loadUsers();
+                    },
+                    error: error => {
+                        this.alertService.error(error);
+                        this.loading = false;
+                    }
+                });
         }
-        user.isEditing = false;
-        this.originalUser = null;
+    }
+
+    closeModal() {
+        const modal = document.getElementById('editUserModal');
+        if (modal) {
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+        }
+        this.selectedUser = null;
+        this.editForm.reset();
     }
 } 

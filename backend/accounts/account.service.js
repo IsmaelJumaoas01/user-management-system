@@ -48,8 +48,7 @@ async function authenticate({ email, password, ipAddress }) {
 async function register(params, origin) {
     // validate
     if (await db.Account.findOne({ where: { email: params.email } })) {
-        // send already registered error in email to prevent account enumeration
-        return await sendAlreadyRegisteredEmail(params.email, origin);
+        throw 'Email "' + params.email + '" is already registered';
     }
 
     // create account object

@@ -126,9 +126,9 @@ npm install nodemailer
    - Body:
    ```json
    {
-     "email": "test@example.com",
-     "resetCode": "code_from_email",
-     "newPassword": "newpassword"
+     "token": "token code from email",
+     "password": "newpassword",
+     "confirmPassword": "newpassword"
    }
    ```
 

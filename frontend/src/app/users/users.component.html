@@ -20,23 +20,9 @@
                     </td>
                 </tr>
                 <tr *ngFor="let user of users">
-                    <td>
-                        <span *ngIf="!user.isEditing">{{user.title}}</span>
-                        <select *ngIf="user.isEditing" [(ngModel)]="user.title" class="form-control form-control-sm">
-                            <option value="Mr">Mr</option>
-                            <option value="Mrs">Mrs</option>
-                            <option value="Ms">Ms</option>
-                            <option value="Dr">Dr</option>
-                        </select>
-                    </td>
-                    <td>
-                        <span *ngIf="!user.isEditing">{{user.firstName}}</span>
-                        <input *ngIf="user.isEditing" type="text" [(ngModel)]="user.firstName" class="form-control form-control-sm">
-                    </td>
-                    <td>
-                        <span *ngIf="!user.isEditing">{{user.lastName}}</span>
-                        <input *ngIf="user.isEditing" type="text" [(ngModel)]="user.lastName" class="form-control form-control-sm">
-                    </td>
+                    <td>{{user.title}}</td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.role}}</td>
                     <td>
@@ -45,15 +31,14 @@
                         </span>
                     </td>
                     <td>
-                        <button *ngIf="!user.isEditing" class="btn btn-sm btn-primary" (click)="startEdit(user)">
-                            <i class="fas fa-edit"></i> Edit
-                        </button>
-                        <button *ngIf="user.isEditing" class="btn btn-sm btn-success" (click)="saveEdit(user)">
-                            <i class="fas fa-save"></i> Save
-                        </button>
-                        <button *ngIf="user.isEditing" class="btn btn-sm btn-secondary" (click)="cancelEdit(user)">
-                            <i class="fas fa-times"></i> Cancel
-                        </button>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-primary" (click)="editUser(user)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" (click)="deleteUser(user)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
                     </td>
                 </tr>
                 <tr *ngIf="!loading && users.length === 0">
@@ -63,5 +48,77 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="editForm" (ngSubmit)="onEditSubmit()">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <select formControlName="title" class="form-control">
+                                <option value="Mr">Mr</option>
+                                <option value="Mrs">Mrs</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Ms">Ms</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" formControlName="firstName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" formControlName="lastName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" formControlName="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Role</label>
+                            <select formControlName="role" class="form-control">
+                                <option value="User">User</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="card mt-3">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0"><i class="fas fa-key me-2"></i>Change Password</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted small mb-3">Leave blank to keep the same password</p>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <input type="password" formControlName="password" class="form-control">
+                                    <div *ngIf="editForm.get('password')?.touched && editForm.get('password')?.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="editForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input type="password" formControlName="confirmPassword" class="form-control">
+                                    <div *ngIf="editForm.get('confirmPassword')?.touched && editForm.get('confirmPassword')?.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="editForm.get('confirmPassword')?.errors?.['mustMatch']">Passwords must match</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="onEditSubmit()">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div> 

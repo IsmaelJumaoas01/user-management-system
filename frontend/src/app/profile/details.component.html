@@ -1,6 +1,47 @@
-<h1>My profile</h1>
-<p>
-    <strong>Name: </strong> {{account.title}} {{account.firstName}} {{account.lastName}}<br />
-    <strong>Email: </strong> {{account.email}}
-</p>
-<p><a routerLink="update">Update Profile</a></p>
+<div class="profile-container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="fas fa-user me-2"></i>My Profile</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-md-3 text-center">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user-circle fa-5x text-primary"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="profile-info">
+                                <h4 class="mb-3">{{account.title}} {{account.firstName}} {{account.lastName}}</h4>
+                                <div class="mb-2">
+                                    <i class="fas fa-envelope me-2 text-muted"></i>
+                                    <span class="text-muted">Email:</span>
+                                    <span class="ms-2">{{account.email}}</span>
+                                </div>
+                                <div class="mb-2">
+                                    <i class="fas fa-shield-alt me-2 text-muted"></i>
+                                    <span class="text-muted">Role:</span>
+                                    <span class="ms-2">{{account.role}}</span>
+                                </div>
+                                <div>
+                                    <i class="fas fa-check-circle me-2 text-muted"></i>
+                                    <span class="text-muted">Status:</span>
+                                    <span class="ms-2" [ngClass]="{'text-success': account.isVerified, 'text-warning': !account.isVerified}">
+                                        {{account.isVerified ? 'Verified' : 'Pending Verification'}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a routerLink="update" class="btn btn-primary">
+                            <i class="fas fa-user-edit me-2"></i>Update Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   form!: UntypedFormGroup;
   loading = false;
   submitted = false;
+  errorMessage: string = '';
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -34,13 +35,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-
   get f() { return this.form.controls; }
 
   onSubmit() {
     this.submitted = true;
-
-
+    this.errorMessage = '';
     this.alertService.clear();
 
     if (this.form.invalid) {
@@ -56,7 +55,13 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
         error: error => {
-          this.alertService.error(error);
+          if (error.includes('already registered')) {
+            this.errorMessage = 'This email address is already registered. Please use a different email or try logging in.';
+            this.form.get('email')?.setValue('');
+            this.form.get('email')?.markAsUntouched();
+          } else {
+            this.alertService.error(error);
+          }
           this.loading = false;
         }
       });

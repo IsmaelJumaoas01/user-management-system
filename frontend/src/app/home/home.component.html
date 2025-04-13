@@ -1,6 +1,25 @@
 <div class="p-4">
     <div class="container">
-      <h1>Hi {{ account.firstName }}!</h1>
-      <p>You're logged in with Angular 10 & JWT</p>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-user-circle fa-4x text-primary"></i>
+                        </div>
+                        <h1 class="card-title">Welcome, {{ account.title }} {{ account.firstName }}!</h1>
+                        <p class="card-text text-muted">You're logged in to the User Management System</p>
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+                            <a routerLink="/profile/update" class="btn btn-primary">
+                                <i class="fas fa-user-edit me-2"></i>Update Profile
+                            </a>
+                            <a routerLink="/profile" class="btn btn-outline-primary">
+                                <i class="fas fa-user me-2"></i>View Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
