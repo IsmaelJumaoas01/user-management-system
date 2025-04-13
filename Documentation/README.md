@@ -9,34 +9,34 @@ A modern web application for user management with email verification, authentica
 
 1. **Paul Christian Patiño** - Email Sign-Up, Verification, and Authentication
    - Implement email sign-up functionality
-   ![Email Sign-Up Implementation](docs/patino 1.png)
+   <img src="docs/patino 1.png" alt="Email Sign-Up Implementation" width="800"/>
    
    - Implement email verification process
-   ![Email Verification Process 1](docs/patino 2.1.png)
-   ![Email Verification Process 2](docs/patino 2.2.png)
+   <img src="docs/patino 2.1.png" alt="Email Verification Process 1" width="800"/>
+   <img src="docs/patino 2.2.png" alt="Email Verification Process 2" width="800"/>
    
    - Implement authentication system
-   ![Authentication System](docs/patino 3.1.png)
+   <img src="docs/patino 3.1.png" alt="Authentication System" width="800"/>
    
    - Branch: `backend-signup-auth`
 
 2. **Arnold Cutad Jr** - Role-Based Authorization, Forgot Password, and CRUD
    - Implement role-based authorization system
-   ![Role-Based Authorization 1](docs/cutad 1.1.png)
-   ![Role-Based Authorization 2](docs/cutad 1.2.png)
+   <img src="docs/cutad 1.1.png" alt="Role-Based Authorization 1" width="800"/>
+   <img src="docs/cutad 1.2.png" alt="Role-Based Authorization 2" width="800"/>
    
    - Implement forgot password functionality
-   ![Forgot Password](docs/cutad 2.1.png)
+   <img src="docs/cutad 2.1.png" alt="Forgot Password" width="800"/>
    
    - Implement reset password functionality
-   ![Reset Password 1](docs/cutad 3.1.png)
-   ![Reset Password 2](docs/cutad 3.2.png)
+   <img src="docs/cutad 3.1.png" alt="Reset Password 1" width="800"/>
+   <img src="docs/cutad 3.2.png" alt="Reset Password 2" width="800"/>
    
    - Implement CRUD operations for user management
-   ![CRUD Operations 1](docs/cutad 4.1.png)
-   ![CRUD Operations 2](docs/cutad 4.2.png)
-   ![CRUD Operations 3](docs/cutad 4.3.png)
-   ![CRUD Operations 4](docs/cutad 4.4.png)
+   <img src="docs/cutad 4.1.png" alt="CRUD Operations 1" width="800"/>
+   <img src="docs/cutad 4.2.png" alt="CRUD Operations 2" width="800"/>
+   <img src="docs/cutad 4.3.png" alt="CRUD Operations 3" width="800"/>
+   <img src="docs/cutad 4.4.png" alt="CRUD Operations 4" width="800"/>
    
    - Branch: `backend-authorization-crud`
 
@@ -44,25 +44,25 @@ A modern web application for user management with email verification, authentica
 
 1. **Ismael Jose Jumao-as** - Email Sign-Up, Verification, and Authentication
    - Implement email sign-up functionality
-   ![Email Sign-Up Frontend 1](docs/mael 1.1.png)
-   ![Email Sign-Up Frontend 2](docs/mael 1.2.png)
-   ![Email Sign-Up Frontend 3](docs/mael 1.3.png)
+   <img src="docs/mael 1.1.png" alt="Email Sign-Up Frontend 1" width="800"/>
+   <img src="docs/mael 1.2.png" alt="Email Sign-Up Frontend 2" width="800"/>
+   <img src="docs/mael 1.3.png" alt="Email Sign-Up Frontend 3" width="800"/>
    
    - Implement email verification process
-   ![Email Verification Frontend](docs/mael 2.1.png)
+   <img src="docs/mael 2.1.png" alt="Email Verification Frontend" width="800"/>
    
    - Implement authentication system
-   ![Authentication Frontend](docs/mael 3.1.png)
+   <img src="docs/mael 3.1.png" alt="Authentication Frontend" width="800"/>
    
    - Branch: `frontend-signup-auth`
 
 2. **Prince Dominic Lazaga** - Profile Management, Admin Dashboard, and Fake Backend
    - Implement profile management system
-   ![Profile Management](docs/lazaga 1.1.png)
+   <img src="docs/lazaga 1.1.png" alt="Profile Management" width="800"/>
    
    - Implement admin dashboard
-   ![Admin Dashboard 1](docs/lazaga 2.1.png)
-   ![Admin Dashboard 2](docs/lazaga 2.2.png)
+   <img src="docs/lazaga 2.1.png" alt="Admin Dashboard 1" width="800"/>
+   <img src="docs/lazaga 2.2.png" alt="Admin Dashboard 2" width="800"/>
    
    - Implement fake backend for development
    
